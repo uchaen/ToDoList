@@ -1,22 +1,44 @@
 {% extends 'base/main.html' %}
 {% block content %}
 
-<div class="header-bar">
+<div class="header-bar" >
 
-    <h1>Login</h1>
+    <h1 style="margin-left: 10px;">Login</h1>
 </div>
 
 <div class="card-body">
    <form method="POST">
         {% csrf_token %}
         {{ form.as_p }}
-        <input class="button" type="submit" values="Login">
+        <input class="button" type="submit" value="Login">
     </form>
     
-    <p>want to make an acoount? <a href="{% url 'register' %}">Register</a></p>
+    <p>Want to make an acoount? &nbsp<a href="{% url 'register' %}">Register</a></p>
 
 </div>
 
 
+<script>
+    function setTheme(themeName) {
+        localStorage.setItem('theme', themeName);
+        document.documentElement.className = themeName;
+    }
+    function toggleTheme() {
+        if (localStorage.getItem('theme') === 'theme-dark') {
+            setTheme('theme-light');
+        }
+        else {
+            setTheme('theme-dark')
+        }
+    }
+    (function() { //첫 로드 시 테마 즉시 호출
+        if (localStorage.getItem('theme') === 'theme-dark') {
+            setTheme('theme-dark');
+        }
+        else {
+            setTheme('theme-light')
+        }
+    } )();
+</script>
 
 {% endblock content %}

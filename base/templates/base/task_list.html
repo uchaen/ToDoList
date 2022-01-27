@@ -1,30 +1,37 @@
 {% extends 'base/main.html' %}
+
 {% block content %}
+
+
 
 <div class="header-bar">
 
     {% if request.user.is_authenticated %}
-        <a style="float:right; padding-right:7px;" href="{% url 'logout' %}">&nbsp Logout</a>
+        <a style="float:right; margin-right:7px;" href="{% url 'logout' %}">&nbsp Logout</a>
         <a style="float:right;">Hello {{request.user|title}}!&nbsp|</a>
     {% else %}
-        <a style="float:right; padding-right:7px;" href="{% url 'login' %}">Login</a> 
+        <a style="float:right; margin-right:7px;" href="{% url 'login' %}">Login</a> 
     {% endif %}
 
     <div>
-        <p style="margin: 3px;">&nbsp</p>
+        <p style="margin: 5px;">&nbsp</p>
         <a style="margin-top: 50px; font-size: 50px; margin-left: 7px;" href="{% url 'tasks' %}">To Do List</a>
-        <h3 style="margin-top: 22px; margin-bottom: 0px; margin-left: 7px;">You have <i>{{ count }}</i>&nbsp incomplete task{{ count|pluralize:"s" }}</h3>
+        <label class="switch-button" style="float:right; margin-right:7px; margin-top: 80px;"> 
+            <input type="checkbox" onclick="toggleTheme()" /> <span class="onoff-switch"></span> 
+        </label>
+        <p style="margin: 0px;">&nbsp</p>
+        <a style="margin-top: 22px; margin-bottom: 0px; margin-left: 7px; ">You have <i>{{ count }}</i>&nbsp incomplete task{{ count|pluralize:"s" }}</a>
     </div>
     
 </div>
 
 <div id="search-add-wrapper">
-    <form method="GET" style="margin-top: 5px; display: flex;">
+    <a style="margin-left: 7px;" id="add-link" href="{% url 'task-create'  %}">&#x2b;</a>
+
+    <form method="GET" style="margin-top: 13px; margin-bottom: 13px; display: flex;">
         <input type='text' name='search-area' value="{{search_input}}"> <!--value=적혀있을내용-->
         <input class= "button" type="submit" value='Search'>
-    </form>
-    
-    <a id="add-link" href="{% url 'task-create'  %}">&#x2b;</a>
+    </form>  
 </div>
 
 
@@ -44,7 +51,7 @@
                     <a href="{% url 'task-update' task.id %}">{{task}}</a>
                 </div>
                 <a class="delete-link" href="{% url 'task-delete' task.id %}">&#215;</a>
-                <!--구글링 html back arrow / toptal.com-->
+                <!-- www.toptal.com/designers/htmlarrows/ -->
 
             {% endif %}
         </div>
@@ -54,6 +61,28 @@
     {% endfor %}
 </div>
 
+<script>
+    function setTheme(themeName) {
+        localStorage.setItem('theme', themeName);
+        document.documentElement.className = themeName;
+    }
+    function toggleTheme() {
+        if (localStorage.getItem('theme') === 'theme-dark') {
+            setTheme('theme-light');
+        }
+        else {
+            setTheme('theme-dark')
+        }
+    }
+    (function() { //첫 로드 시 테마 즉시 호출
+        if (localStorage.getItem('theme') === 'theme-dark') {
+            setTheme('theme-dark');
+        }
+        else {
+            setTheme('theme-light')
+        }
+    } )();
+</script>
 
 
 {% endblock content %}

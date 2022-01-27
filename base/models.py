@@ -7,6 +7,7 @@ class Task(models.Model):
     description = models.TextField(null=True, blank=True)
     complete = models.BooleanField(default=False)
     create = models.DateTimeField(auto_now_add=True)
+    #group = models.ForeignKey(Group, on_delete=models.CASCADE, null=True, blank=True)
 
     def __str__(self):
         return self.title

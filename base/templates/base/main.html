@@ -4,20 +4,20 @@
 <head>
     <meta charset='utf-8'>
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-    <title>To Do Items</title>
+    <title> To Do List ~ Uchaen made</title>
     <meta name='description' content="">
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <style type="text/css">
         @font-face {
-            font-family: 'GowunDodum-Regular';
-            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2108@1.1/GowunDodum-Regular.woff') format('woff');
+            font-family: 'CookieRun-Regular';
+            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/CookieRun-Regular.woff') format('woff');
             font-weight: normal;
             font-style: normal;
         }
 
         body{
             background-color: #FAFAFA;
-            font-family: 'GowunDodum-Regular';
+            font-family: 'CookieRun-Regular';
             padding-top: 50px;
 
         }
@@ -28,43 +28,95 @@
         h4,
         h5,
         h6 {
-                font-family: 'GowunDodum-Regular';
-        }
-        a,
-        p {
-            color:gray
+                font-family: 'CookieRun-Regular';
         }
 
         .container{
             max-width: 550px;
             margin: auto;
-            background-color: #fff;
+            background-color: var(--background-color);
             -webkit-box-shadow: 2px 2px 13px -4px rgba(0,0,0,0.21);
             box-shadow: 2px 2px 13px -4px rgba(0,0,0,0.21);
+            border-radius: 6px 6px 0 0;
         }
 
         .header-bar {
-            /*display: flex;
-            /*justify-content: space-between;*/
-            color: #fff;
+            color: var(--background-color);
             padding: 10px;
             border-radius: 5px 5px 0 0;
-            background: linear-gradient(90deg, #EEA390 0%, #EB796F 43%, #EB796F 100%);
+            background: linear-gradient(90deg, var(--base-color) 0%, var(--middle-color) 43%, var(--point-color) 100%);
         }
-        
-        .header-bar a { /* login logout 글씨색*/
-            color: #fff;
+
+        .header-bar a { 
+            color: var(--title-color);
             text-decoration: none;
-            
         }
+
+        /*dark모드 light모드 테마 구현*/
+        .switch-button { 
+            position: relative; display: inline-block; width: 55px; height: 20px; 
+        } 
+        .switch-button input { 
+            opacity: 0; width: 0; height: 0; 
+        } 
+
+        .onoff-switch { 
+            position: absolute; cursor: pointer; 
+            top: 0; left: 0; right: 0; bottom: 0; border-radius:20px; 
+            background-color: var(--base-color); 
+            box-shadow: inset 1px 5px 1px var(--middle-color); 
+            -webkit-transition: .4s; transition: .4s; 
+        } 
+        .onoff-switch:before { 
+            position: absolute; content: ""; 
+            height: 22px; width: 22px; left: 4px; bottom: 4px; border-radius:20px;
+            background-color: white;  
+            background-image: var(--switch-img);
+            background-size: contain;
+            -webkit-transition: .5s; transition: .4s;
+        } 
+
+        .switch-button input:checked + .onoff-switch { 
+            background-color: var(--base-color); 
+            box-shadow: inset 1px 5px 1px var(--middle-color); 
+            
+        } 
+        .switch-button input:checked + .onoff-switch:before { 
+            
+            -webkit-transform: translateX(26px); 
+            -ms-transform: translateX(26px); 
+            transform: translateX(26px); 
+        }
+
+        .theme-light {
+            --base-color: #f0a997;
+            --middle-color: #eb7f75;
+            --point-color: #eb685d;
+            --background-color: white;
+            --text-color: rgb(100, 100, 100);
+            --title-color: white;
+            --mono-color: rgb(211, 211, 211);
+            --switch-img: url("https://cdn-icons.flaticon.com/png/512/2264/premium/2264647.png?token=exp=1643294390~hmac=e2db23da9945722904b506e84745572d");
+        }
+        .theme-dark {
+            --base-color: #85aabb;
+            --middle-color: #607aa3;
+            --point-color: #4a6a9c;
+            --background-color: rgb(41, 41, 49);
+            --text-color: rgb(184, 184, 184);
+            --title-color: rgb(41, 41, 49);
+            --mono-color: gray;
+            --switch-img: url("https://cdn-icons.flaticon.com/png/512/3543/premium/3543618.png?token=exp=1643294026~hmac=ae118662164105f59bd86c2dabaec13e") ;
+        }
+
 
         .task-wrapper {
             display: flex;
             align-items: center;
             justify-content: space-between;
             padding: 20px;
-            background-color: #fff;
-            border-top: 1px solid rgb(211, 211, 211);
+            background-color: var(--background-color);
+            border-top: 1px solid var(--mono-color);
         }
 
         .task-title {
@@ -72,28 +124,28 @@
         }
         .task-title a {
             text-decoration: none;
-            color: #444444;
+            color: var(--text-color);
             margin-left: 10px;
         }
 
         .task-complete-icon {
             height: 20px;
             width: 20px;
-            background-color: #ff8b81;
+            background-color: var(--base-color);
             border-radius: 50%; 
         }
 
         .task-incomplete-icon {
             height: 20px;
             width: 20px;
-            background-color: rgb(221, 221, 221);
+            background-color: var(--mono-color);
             border-radius: 50%;
         }
 
         .delete-link {
             text-decoration: none;
             font-weight: 900;
-            color: #ff5a4b;
+            color: var(--point-color);
             font-size: 22px;
             line-height: 0;
         }
@@ -109,34 +161,38 @@
 
         #add-link {
             text-decoration: none;
-            color: #ffbbb5;
+            color: var(--base-color);
             font-size: 39px;
-            text-shadow: 1px 1px #ff5e50;
+            text-shadow: 1px 1px var(--point-color);
         }
 
         input[type=text],
         input[type=password],
         textarea {
-            border: 1px solid orange;
+            border: 2px solid var(--middle-color);
             border-radius: 5px;
             padding: 10px;
             width: 90%;
+            background-color:  var(--background-color);
+            color: var(--text-color);
         }
 
         label {
             padding-top: 10px;
             display: block;
+            color: var(--text-color);
         }
 
         .button {
-            border: 1px solid orangered;
-            background-color: white;
-            color: tomato;
+            border: 2px solid var(--middle-color);
+            background-color:  var(--background-color);
+            color: var(--point-color);
             padding: 10px;
             font-size: 14px;
             border-radius: 5px;
             cursor: pointer;
             text-decoration: none;
+            font-family: 'CookieRun-Regular';
         }
 
         .card-body {
