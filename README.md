@@ -12,7 +12,8 @@
 
 ### 로그인 및 회원가입 가능
 <br>
-<img src="https://user-images.githubusercontent.com/67726427/154800353-a7a26ee3-71a1-43ce-85d1-8d8a9aafa0c8.PNG" width="50%"> <img src="https://user-images.githubusercontent.com/67726427/154800356-fc102639-f7a9-4259-bc83-58cfcc31960c.PNG" width="50%">
+<a> <img src="https://user-images.githubusercontent.com/67726427/154800353-a7a26ee3-71a1-43ce-85d1-8d8a9aafa0c8.PNG" width="50%"> </a>
+<a> <img src="https://user-images.githubusercontent.com/67726427/154800356-fc102639-f7a9-4259-bc83-58cfcc31960c.PNG" width="30%"> </a>
 
 
 
