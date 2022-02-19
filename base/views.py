@@ -26,9 +26,9 @@ class RegisterPage(FormView):
     redirect_authenticated_user = True
     success_url = reverse_lazy('tasks')
 
-    def form_valid(self, form): #user 선택지가 기본이 본인이게
+    def form_valid(self, form): 
         user = form.save()
-        if user is not None:
+        if user is not None:  # 회원가입 완료 시 자동 로그인
             login(self.request, user)
         return super(RegisterPage, self).form_valid(form)
 
@@ -45,12 +45,12 @@ class TaskList(LoginRequiredMixin, ListView):
     def get_context_data(self, **kwargs):  
         context = super().get_context_data(**kwargs)
         context['tasks'] = context['tasks'].filter(user=self.request.user) #다른사람꺼 못보게
-        context['count'] = context['tasks'].filter(complete=False).count()
+        context['count'] = context['tasks'].filter(complete=False).count() #complete되지않은 task개수 count해줌
         
         search_input = self.request.GET.get('search-area') or ''
         if search_input:
             context['tasks'] = context['tasks'].filter(
-                title__icontains=search_input) #icontains대신 startswith로 설정바꿀수있음
+                title__icontains=search_input) #검색 설정. icontains(~포함)대신 startswith(~로 시작하는) 가능
         context['search_input'] = search_input        
 
         return context
@@ -67,13 +67,13 @@ class TaskCreate(LoginRequiredMixin, CreateView):
     fields = ['title', 'description']
     success_url = reverse_lazy('tasks')
 
-    def form_valid(self, form): #user specific data
+    def form_valid(self, form): #user specific data를 위해. 할일 생성 시 user 선택지가 기본이 본인임
         form.instance.user = self.request.user
         return super(TaskCreate, self).form_valid(form)
 
 class TaskUpdate(LoginRequiredMixin, UpdateView):
     model = Task
-    fields = ['title', 'description'] # '__all__' 
+    fields = ['title', 'description'] # '__all__'로 하면 전부 보임
     success_url = reverse_lazy('tasks')
 
 class TaskDelete(LoginRequiredMixin, DeleteView):
@@ -82,7 +82,7 @@ class TaskDelete(LoginRequiredMixin, DeleteView):
     success_url = reverse_lazy('tasks')
 
 
-
+# 할일 complete하거나 취소할수있는 함수
 def crossOff(request,*args, pk):
     item = Task.objects.get(pk=pk)
     item.complete=True

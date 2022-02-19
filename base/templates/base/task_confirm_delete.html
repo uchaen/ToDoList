@@ -7,13 +7,13 @@
 
 <div class="card-body">
     <form method="POST">
-        {% csrf_token %}
+        {% csrf_token %} <!-- Django의 CSRF공격에 대한 방어. POST 요청에 대해서만 csrf token을 발급하고 체크 -->
         <p>Are you sure to delete?  "{{ task }}"</p>
         <input class="button" type="submit" value = "Delete"/>
     </form>
 </div>
 
-
+<!-- 라이트,다크테마 구현을 위한 JS코드 -->
 <script>
     function setTheme(themeName) {
         localStorage.setItem('theme', themeName);

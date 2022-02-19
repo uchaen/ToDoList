@@ -43,12 +43,12 @@
             box-shadow: 2px 2px 13px -4px rgba(0,0,0,0.21);
             border-radius: 6px 6px 0 0;
         }
-
+        /* 제목 및 현재상태, 로그아웃 버튼이 존재하는 헤더바 */
         .header-bar {
             color: var(--background-color);
             padding: 10px;
             border-radius: 5px 5px 0 0;
-            background: linear-gradient(90deg, var(--base-color) 0%, var(--middle-color) 43%, var(--point-color) 100%);
+            background: linear-gradient(90deg, var(--base-color) 0%, var(--middle-color) 43%, var(--point-color) 100%); /*그라데이션 꾸밈*/
         }
 
         .header-bar a { 
@@ -56,7 +56,7 @@
             text-decoration: none;
         }
 
-        /*dark모드 light모드 테마 구현*/
+        /*dark모드 light모드 테마를 위한 스위치*/
         .switch-button { 
             position: relative; display: inline-block; width: 55px; height: 20px; 
         } 
@@ -92,6 +92,7 @@
             transform: translateX(26px); 
         }
 
+        /*dark모드 light모드 테마 색상 설정*/
         .theme-light {
             --base-color: #f0a997;
             --middle-color: #eb7f75;
@@ -113,7 +114,7 @@
             --switch-img: url("https://cdn-icons.flaticon.com/png/512/3543/premium/3543616.png?token=exp=1644730657~hmac=85108aae7ea5f9d4a75afb102691779b") ;
         }
 
-
+        /* 각 할일들의 행에 존재하는 것들 */
         .task-wrapper {
             display: flex;
             align-items: center;
@@ -154,6 +155,7 @@
             line-height: 0;
         }
 
+        /* 검색창이 존재하는 행 */
         #search-add-wrapper {
             display: flex;
             align-items: center;
@@ -163,6 +165,7 @@
             
         }
 
+        /* +버튼 */
         #add-link {
             text-decoration: none;
             color: var(--base-color);
@@ -170,6 +173,7 @@
             text-shadow: 1px 1px var(--point-color);
         }
 
+        /* 아이디,비밀번호,title, task 등의 text를 쓰는 영역 */
         input[type=text],
         input[type=password],
         textarea {

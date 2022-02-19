@@ -3,10 +3,9 @@
 {% block content %}
 
 
-
 <div class="header-bar">
 
-    {% if request.user.is_authenticated %}
+    {% if request.user.is_authenticated %} <!-- 유저의 로그인 여부를 확인. 로그인 상태면 True 리턴 -->
         <a style="float:right; margin-right:7px;" href="{% url 'logout' %}">&nbsp Logout</a>
         <a style="float:right;">Hello {{request.user|title}}!&nbsp|</a>
     {% else %}
@@ -20,16 +19,17 @@
             <input type="checkbox" onclick="toggleTheme()" /> <span class="onoff-switch"></span> 
         </label>
         <p style="margin: 0px;">&nbsp</p>
-        <a style="margin-top: 22px; margin-bottom: 0px; margin-left: 7px; ">You have <i>{{ count }}</i>&nbsp incomplete task{{ count|pluralize:"s" }}</a>
+        <a style="margin-top: 22px; margin-bottom: 0px; margin-left: 7px;">
+            You have <i>{{ count }}</i>&nbsp incomplete task{{ count|pluralize:"s" }} </a> <!-- task가 여러개면 s붙음-->
     </div>
     
 </div>
 
 <div id="search-add-wrapper">
-    <a style="margin-left: 7px;" id="add-link" href="{% url 'task-create'  %}">&#x2b;</a>
+    <a style="margin-left: 7px;" id="add-link" href="{% url 'task-create'  %}">&#x2b;</a> <!-- &#x2b;는 +모양 -->
 
-    <form method="GET" style="margin-top: 13px; margin-bottom: 13px; display: flex;">
-        <input type='text' name='search-area' value="{{search_input}}"> <!--value=적혀있을내용-->
+    <form method="GET" style="margin-top: 13px; margin-bottom: 13px; display: flex;"> <!-- GET: 서버에서 URL의 정보를 가져옴. 서버의 정보 변경이 없을때 사용 -->
+        <input type='text' name='search-area' value="{{search_input}}"> <!-- value=적혀있을내용. 검색 후에도 쓴 내용 남아있게 -->
         <input class= "button" type="submit" value='Search'>
     </form>  
 </div>
@@ -51,7 +51,7 @@
                     <a href="{% url 'task-update' task.id %}">{{task}}</a>
                 </div>
                 <a class="delete-link" href="{% url 'task-delete' task.id %}">&#215;</a>
-                <!-- www.toptal.com/designers/htmlarrows/ -->
+                <!-- www.toptal.com/designers/htmlarrows/ 에서 이모티콘 코드 알수있음 -->
 
             {% endif %}
         </div>
@@ -61,6 +61,7 @@
     {% endfor %}
 </div>
 
+<!-- 라이트,다크테마 구현을 위한 JS코드 -->
 <script>
     function setTheme(themeName) {
         localStorage.setItem('theme', themeName);

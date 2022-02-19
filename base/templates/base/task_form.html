@@ -2,12 +2,12 @@
 {% block content %}
 
 <div class="header-bar">
-    <a href="{% url 'tasks' %}">&#8592; back</a>
+    <a href="{% url 'tasks' %}">&#8592; back</a> <!-- 뒤로가기 -->
 </div>
 
 <div class="card-body">
-    <form method="POST" actions"">
-      {% csrf_token %}
+    <form method="POST"> <!-- POST: 요청된 자원을 생성. 서버의정보 변경이 있을 때 사용. GET의 반대-->
+      {% csrf_token %} <!-- Django의 CSRF공격에 대한 방어. POST 요청에 대해서만 csrf token을 발급하고 체크 -->
       
       <label> {{ form.title.label }} </label>
       {{ form.title }}
@@ -20,7 +20,7 @@
     </form>
 </div>
 
-
+<!-- 라이트,다크테마 구현을 위한 JS코드 -->
 <script>
   function setTheme(themeName) {
       localStorage.setItem('theme', themeName);
