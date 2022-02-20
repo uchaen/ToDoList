@@ -10,7 +10,8 @@
 <br> 
 
 # 개발 목표
-<li>HTML, CSS, JS 공부</li>
+<li>HTML, CSS 연습</li>
+<li>리액트 공부 전 바닐라js 지식 쌓기</li>
 <li>파이썬 프레임워크 중 범용성이 가장 높은 Django의 이해</li>
 <br> 
 
