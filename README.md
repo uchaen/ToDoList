@@ -15,7 +15,7 @@
 <br> 
 
 # 사용 기술 
-<li> Frontend : HTML, CSS, Javascript </li>
+<li> Frontend : HTML, CSS, Javascript ( Vanilla JS ) </li>
 <li> Backend : Python ( Django ) </li>
 <br> 
 
