@@ -21,6 +21,9 @@
 <br> 
 
 # 개선사항
-<li>테마 스위치 토글 후, 새로고침을 하면 스위치 위치가 왼쪽으로 바뀌는 것을 확인함. 위치고정 필요</li>
+<img align="right" src="https://user-images.githubusercontent.com/67726427/155534876-7de5a6dc-a0ed-4cf8-aa3f-7a6d11760a95.PNG" width="30%">
+<li>테마 스위치 토글 후, 새로고침을 하면 스위치 위치가 왼쪽으로 바뀌는 것을 확인. 
+  <br> &nbsp &nbsp 위치고정 필요 (22.02.20.)<br> &nbsp &nbsp ㄴ해결 (22.02.24.) </li>
+        
 
 
