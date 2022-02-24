@@ -58,39 +58,24 @@
 
         /*dark모드 light모드 테마를 위한 스위치*/
         .switch-button { 
-            position: relative; display: inline-block; width: 55px; height: 20px; 
+            position: relative; display: inline-block; 
+            width: 55px; height: 20px; 
         } 
-        .switch-button input { 
-            opacity: 0; width: 0; height: 0; 
-        } 
-
-        .onoff-switch { 
+        .toggle-switch { /*버튼의 배경지 부분*/
             position: absolute; cursor: pointer; 
             top: 0; left: 0; right: 0; bottom: 0; border-radius:20px; 
             background-color: var(--base-color); 
             box-shadow: inset 1px 5px 1px var(--middle-color); 
-            -webkit-transition: .4s; transition: .4s; 
         } 
-        .onoff-switch:before { 
+        .toggle-switch:before { /*동그란 버튼 본인*/
             position: absolute; content: ""; 
-            height: 22px; width: 22px; left: 4px; bottom: 4px; border-radius:20px;
+            height: 22px; width: 22px; border-radius:20px;
+            left: var(--switch-loca); bottom: 4px;
             background-color: white;  
             background-image: var(--switch-img);
             background-size: contain;
-            -webkit-transition: .5s; transition: .4s;
+            -webkit-transition: .5s; transition: .4s; /* 자연스러운 이동 애니메이션 */
         } 
-
-        .switch-button input:checked + .onoff-switch { 
-            background-color: var(--base-color); 
-            box-shadow: inset 1px 5px 1px var(--middle-color); 
-            
-        } 
-        .switch-button input:checked + .onoff-switch:before { 
-            
-            -webkit-transform: translateX(26px); 
-            -ms-transform: translateX(26px); 
-            transform: translateX(26px); 
-        }
 
         /*dark모드 light모드 테마 색상 설정*/
         .theme-light {
@@ -102,6 +87,7 @@
             --title-color: white;
             --mono-color: rgb(211, 211, 211);
             --switch-img: url("https://cdn-icons-png.flaticon.com/512/831/831682.png");
+            --switch-loca: 4px;
         }
         .theme-dark {
             --base-color: #85aabb;
@@ -112,6 +98,7 @@
             --title-color: rgb(41, 41, 49);
             --mono-color: gray;
             --switch-img: url("https://cdn-icons.flaticon.com/png/512/3543/premium/3543616.png?token=exp=1644730657~hmac=85108aae7ea5f9d4a75afb102691779b") ;
+            --switch-loca: 30px;
         }
 
         /* 각 할일들의 행에 존재하는 것들 */
